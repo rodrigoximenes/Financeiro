@@ -42,5 +42,15 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Financas.Domain\Financas.Domain.csproj">
+      <Project>{fd51dfd5-80cc-4e52-b012-92248883b748}</Project>
+      <Name>Financas.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Financas.Infrastructure\Financas.Infrastructure.csproj">
+      <Project>{b37336b4-5085-4d9c-b9b1-a6057efe33db}</Project>
+      <Name>Financas.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
