@@ -67,7 +67,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="Context\FinancasContext.cs" />
     <Compile Include="DependencyInjection\CompositionRoot.cs" />
     <Compile Include="Migrations\201903072344229_TabelasIniciais.cs" />
@@ -90,7 +89,9 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="App_Start\" />
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201903072344229_TabelasIniciais.resx">
       <DependentUpon>201903072344229_TabelasIniciais.cs</DependentUpon>
