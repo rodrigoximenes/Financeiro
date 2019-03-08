@@ -8,7 +8,7 @@ namespace Financas.Presentation.Controllers
 {
     public class UsuarioController : Controller
     {
-        private readonly ApplicationManager _applicationManager = CompositionRoot.Resolve<ApplicationManager>();
+        private readonly IApplicationManager _applicationManager = CompositionRoot.Resolve<IApplicationManager>();
 
         public UsuarioController() { }
 
