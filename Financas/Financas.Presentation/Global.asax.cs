@@ -1,5 +1,6 @@
 ﻿using Financas.Application.Module;
 using Financas.Infrastructure.DependencyInjection;
+using Financas.Infrastructure.Module;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
@@ -16,8 +17,8 @@ namespace Financas.Presentation
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             CompositionRoot.Init();
+            CompositionRoot.AddModule(new InfrastructureModule());
             CompositionRoot.AddModule(new ApplicationModule());
-
         }
     }
 }

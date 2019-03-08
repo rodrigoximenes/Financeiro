@@ -1,7 +1,4 @@
-﻿using System;
-using Financas.Domain.Interface;
-using Financas.Infrastructure.DependencyInjection;
-using Financas.Infrastructure.Repository;
+﻿using Financas.Infrastructure.DependencyInjection;
 
 namespace Financas.Application.Service
 {

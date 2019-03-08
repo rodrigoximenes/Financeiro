@@ -1,7 +1,8 @@
 ﻿namespace Financas.Domain.Interface
 {
-    public interface IUsuarioRepository
+    public interface IUsuarioRepository : IBaseRepository<Usuario>
     {
-        void Adicionar(Usuario usuario);
+
+        
     }
 }

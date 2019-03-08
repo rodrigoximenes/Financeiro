@@ -1,10 +1,11 @@
-﻿using Financas.Infrastructure.Context;
+﻿using Financas.Domain.Interface;
+using Financas.Infrastructure.Context;
 using Financas.Infrastructure.Repository;
 using Ninject.Modules;
 
 namespace Financas.Infrastructure.Module
 {
-    class InfrastructureModule : NinjectModule
+    public class InfrastructureModule : NinjectModule
     {
         public override void Load()
         {
@@ -12,9 +13,8 @@ namespace Financas.Infrastructure.Module
             Bind<FinancasContext>().ToSelf().InTransientScope();
 
             //Repositorio
-            this.Bind<UsuarioRepository>().ToSelf().InSingletonScope();
-
-            //this.Bind(typeof(IBaseRepository<>)).To(typeof(BaseRepository<>));
+            this.Bind<IUsuarioRepository>().To<UsuarioRepository>();
+            this.Bind(typeof(IBaseRepository<>)).To(typeof(BaseRepository<>));
         }
     }
 }

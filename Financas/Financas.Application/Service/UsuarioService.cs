@@ -1,17 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Financas.Domain;
+using Financas.Infrastructure.DependencyInjection;
+using Financas.Domain.Interface;
 
 namespace Financas.Application.Service
 {
     public class UsuarioService : IUsuarioService
     {
+        private readonly IUsuarioRepository _usuarioRepository = CompositionRoot.Resolve<IUsuarioRepository>();
+
         public void Adicionar(Usuario usuario)
         {
-            throw new NotImplementedException();
+            _usuarioRepository.Add(usuario);
         }
     }
 }
