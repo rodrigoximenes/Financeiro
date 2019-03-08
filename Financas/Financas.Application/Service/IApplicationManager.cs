@@ -6,6 +6,6 @@ namespace Financas.Application.Service
     {
         IUsuarioService UsuarioService { get; }
 
-
+        IMovimentacaoService MovimentacaoService { get; }
     }
 }

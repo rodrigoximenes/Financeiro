@@ -14,6 +14,7 @@ namespace Financas.Infrastructure.Module
 
             //Repositorio
             this.Bind<IUsuarioRepository>().To<UsuarioRepository>();
+            this.Bind<IMovimentacaoRepository>().To<MovimentacaoRepository>();
             this.Bind(typeof(IBaseRepository<>)).To(typeof(BaseRepository<>));
         }
     }

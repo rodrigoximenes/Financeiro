@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interface\IBaseRepository.cs" />
+    <Compile Include="Interface\IMovimentacaoRepository.cs" />
     <Compile Include="Interface\IUsuarioRepository.cs" />
     <Compile Include="Movimentacao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

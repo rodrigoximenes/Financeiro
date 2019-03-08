@@ -9,6 +9,7 @@ namespace Financas.Application.Module
         {
             KernelInstance.Bind<IApplicationManager>().To<ApplicationManager>();
             KernelInstance.Bind<IUsuarioService>().To<UsuarioService>();
+            KernelInstance.Bind<IMovimentacaoService>().To<MovimentacaoService>();
         }
     }
 }
