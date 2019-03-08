@@ -30,7 +30,7 @@ namespace Financas.Presentation.Controllers
             return View();
         }
 
-        public ActionResult Cadastro(MovimentacaoViewModel mvm)
+        public ActionResult Cadastro(MovimentacaoModel mvm)
         {
             if (ModelState.IsValid)
             {
@@ -50,9 +50,9 @@ namespace Financas.Presentation.Controllers
 
         #region Metodos
 
-        private MovimentacaoViewModel TransformarMovimentacaoParaViewModel(Movimentacao movimentacao)
+        private MovimentacaoModel TransformarMovimentacaoParaViewModel(Movimentacao movimentacao)
         {
-            return new MovimentacaoViewModel()
+            return new MovimentacaoModel()
             {
                 Tipo = movimentacao.Tipo,
                 Data = movimentacao.Data,
@@ -62,7 +62,7 @@ namespace Financas.Presentation.Controllers
             };
         }
 
-        private Movimentacao TransformarViewModelParaMovimentacao(MovimentacaoViewModel mvm)
+        private Movimentacao TransformarViewModelParaMovimentacao(MovimentacaoModel mvm)
         {
             return new Movimentacao()
             {
@@ -74,14 +74,14 @@ namespace Financas.Presentation.Controllers
             };
         }
 
-        private ICollection<MovimentacaoViewModel> TransformarListaMovimentacoesParaListaViewModel(ICollection<Movimentacao> movimentacoes)
+        private ICollection<MovimentacaoModel> TransformarListaMovimentacoesParaListaViewModel(ICollection<Movimentacao> movimentacoes)
         {
-            var listaViewModel = new List<MovimentacaoViewModel>();
+            var listaViewModel = new List<MovimentacaoModel>();
 
             foreach (var movimentacao in movimentacoes)
             {
                 listaViewModel.Add(
-                    new MovimentacaoViewModel()
+                    new MovimentacaoModel()
                     {
                         Tipo = movimentacao.Tipo,
                         Data = movimentacao.Data,

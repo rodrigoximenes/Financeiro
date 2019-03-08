@@ -3,8 +3,9 @@ using Financas.Domain;
 using Financas.Infrastructure.DependencyInjection;
 using Financas.Presentation.Models;
 using System.Web.Mvc;
-using System;
 using System.Collections.Generic;
+using WebMatrix.WebData;
+using System.Web.Security;
 
 namespace Financas.Presentation.Controllers
 {
@@ -29,17 +30,32 @@ namespace Financas.Presentation.Controllers
             return View();
         }
 
-        public ActionResult Cadastro(UsuarioViewModel usuarioView)
+        public ActionResult Cadastro(UsuarioModel usuarioModel)
         {
             if (ModelState.IsValid)
             {
-                var usuario = TransformarViewModelParaUsuario(usuarioView);
-                _applicationManager.UsuarioService.Adicionar(usuario);
-                return RedirectToAction("Index");
+                try
+                {
+                    //var usuario = TransformarViewModelParaUsuario(usuarioModel);
+
+                    //_applicationManager.UsuarioService.Adicionar(usuario);
+
+                    //WebSecurity.CreateAccount(usuarioModel.Nome, usuarioModel.Senha);
+
+                    WebSecurity.CreateUserAndAccount(usuarioModel.Nome, usuarioModel.Senha, 
+                        new { Email = usuarioModel.Email });
+
+                    return RedirectToAction("Index");
+                }
+                catch (MembershipCreateUserException e)
+                {
+                    ModelState.AddModelError("Usuario Invalido", e);
+                    return View("Form", usuarioModel);
+                }
             }
             else
             {
-                return View("Form", usuarioView);
+                return View("Form", usuarioModel);
             }
         }
 
@@ -47,14 +63,14 @@ namespace Financas.Presentation.Controllers
 
         #region Métodos
 
-        private ICollection<UsuarioViewModel> TransformarListaUsuarioParaListaViewModel(ICollection<Usuario> usuarios)
+        private ICollection<UsuarioModel> TransformarListaUsuarioParaListaViewModel(ICollection<Usuario> usuarios)
         {
-            var listaViewModel = new List<UsuarioViewModel>();
+            var listaViewModel = new List<UsuarioModel>();
 
             foreach (var usuario in usuarios)
             {
                 listaViewModel.Add(
-                    new UsuarioViewModel()
+                    new UsuarioModel()
                     {
                         Nome = usuario.Nome,
                         Email = usuario.Email
@@ -63,18 +79,18 @@ namespace Financas.Presentation.Controllers
             return listaViewModel;
         }
 
-        private Usuario TransformarViewModelParaUsuario(UsuarioViewModel usuarioView)
+        private Usuario TransformarViewModelParaUsuario(UsuarioModel usuarioModel)
         {
             return new Usuario()
             {
-                Nome = usuarioView.Nome,
-                Email = usuarioView.Email
+                Nome = usuarioModel.Nome,
+                Email = usuarioModel.Email
             };
         }
 
-        private UsuarioViewModel TransformarUsuarioParaViewModel(Usuario usuario)
+        private UsuarioModel TransformarUsuarioParaViewModel(Usuario usuario)
         {
-            return new UsuarioViewModel()
+            return new UsuarioModel()
             {
                 Nome = usuario.Nome,
                 Email = usuario.Email
