@@ -7,16 +7,16 @@ namespace Financas.Presentation.Controllers
 {
     public class UsuarioController : Controller
     {
-        private ApplicationManager _applicationService;
+        private ApplicationManager _applicationManager;
 
         public UsuarioController()
         {
-            _applicationService = new ApplicationManager();
+            _applicationManager = new ApplicationManager();
         }
 
         public ActionResult Index()
         {
-            _applicationService.UsuarioRepository.Adicionar(new Usuario());
+            _applicationManager.UsuarioService.Adicionar(new Usuario());
             //passar usuarios para listar 16:56
             return View();
         }
