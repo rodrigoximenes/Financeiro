@@ -1,4 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using Financas.Application.Module;
+using Financas.Infrastructure.DependencyInjection;
+using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 
@@ -12,7 +14,10 @@ namespace Financas.Presentation
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            
+
+            CompositionRoot.Init();
+            CompositionRoot.AddModule(new ApplicationModule());
+
         }
     }
 }

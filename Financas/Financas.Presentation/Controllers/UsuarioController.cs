@@ -1,5 +1,6 @@
 ﻿using Financas.Application.Service;
 using Financas.Domain;
+using Financas.Infrastructure.DependencyInjection;
 using Financas.Presentation.Models;
 using System.Web.Mvc;
 
@@ -7,17 +8,13 @@ namespace Financas.Presentation.Controllers
 {
     public class UsuarioController : Controller
     {
-        private ApplicationManager _applicationManager;
+        private readonly ApplicationManager _applicationManager = CompositionRoot.Resolve<ApplicationManager>();
 
-        public UsuarioController()
-        {
-            _applicationManager = new ApplicationManager();
-        }
+        public UsuarioController() { }
 
         public ActionResult Index()
         {
             _applicationManager.UsuarioService.Adicionar(new Usuario());
-            //passar usuarios para listar 16:56
             return View();
         }
 

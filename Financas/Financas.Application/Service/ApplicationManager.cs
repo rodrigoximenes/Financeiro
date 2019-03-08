@@ -9,7 +9,10 @@ namespace Financas.Application.Service
     {
         public IUsuarioService UsuarioService
         {
-            get { return CompositionRoot.Resolve<IUsuarioService>(); }
+            get
+            {
+                return CompositionRoot.Resolve<IUsuarioService>();
+            }
         }
     }
 }
