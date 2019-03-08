@@ -9,6 +9,5 @@ namespace Financas.Presentation.Models
         public int UsuarioId { get; set; }
         public DateTime Data { get; set; }
         public TipoMovimentacao Tipo { get; set; }
-        public virtual Usuario Usuario { get; set; }
     }
 }

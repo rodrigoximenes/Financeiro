@@ -56,7 +56,6 @@ namespace Financas.Presentation.Controllers
             {
                 Tipo = movimentacao.Tipo,
                 Data = movimentacao.Data,
-                Usuario = movimentacao.Usuario,
                 Valor = movimentacao.Valor,
                 UsuarioId = movimentacao.UsuarioId
             };
@@ -68,7 +67,6 @@ namespace Financas.Presentation.Controllers
             {
                 Tipo = mvm.Tipo,
                 Data = mvm.Data,
-                Usuario = mvm.Usuario,
                 Valor = mvm.Valor,
                 UsuarioId = mvm.UsuarioId
             };
@@ -85,7 +83,6 @@ namespace Financas.Presentation.Controllers
                     {
                         Tipo = movimentacao.Tipo,
                         Data = movimentacao.Data,
-                        Usuario = movimentacao.Usuario,
                         Valor = movimentacao.Valor,
                         UsuarioId = movimentacao.UsuarioId
                     });
