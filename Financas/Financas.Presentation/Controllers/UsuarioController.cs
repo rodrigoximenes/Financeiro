@@ -19,7 +19,7 @@ namespace Financas.Presentation.Controllers
         public ActionResult Index()
         {
             var usuarios = _applicationManager.UsuarioService.ListarTodos();
-            var usuariosViewModel = TransformarUsuarioParaViewModel(usuarios);
+            var usuariosViewModel = TransformarListaUsuarioParaListaViewModel(usuarios);
 
             return View(usuariosViewModel);
         }
@@ -33,7 +33,8 @@ namespace Financas.Presentation.Controllers
         {
             if (ModelState.IsValid)
             {
-
+                var usuario = TransformarViewModelParaUsuario(usuarioView);
+                _applicationManager.UsuarioService.Adicionar(usuario);
                 return RedirectToAction("Index");
             }
             else
@@ -46,7 +47,7 @@ namespace Financas.Presentation.Controllers
 
         #region Métodos
 
-        private ICollection<UsuarioViewModel> TransformarUsuarioParaViewModel(ICollection<Usuario> usuarios)
+        private ICollection<UsuarioViewModel> TransformarListaUsuarioParaListaViewModel(ICollection<Usuario> usuarios)
         {
             var listaViewModel = new List<UsuarioViewModel>();
 
@@ -62,7 +63,25 @@ namespace Financas.Presentation.Controllers
             return listaViewModel;
         }
 
+        private Usuario TransformarViewModelParaUsuario(UsuarioViewModel usuarioView)
+        {
+            return new Usuario()
+            {
+                Nome = usuarioView.Nome,
+                Email = usuarioView.Email
+            };
+        }
+
+        private UsuarioViewModel TransformarUsuarioParaViewModel(Usuario usuario)
+        {
+            return new UsuarioViewModel()
+            {
+                Nome = usuario.Nome,
+                Email = usuario.Email
+            };
+        }
+
         #endregion
-        
+
     }
 }
