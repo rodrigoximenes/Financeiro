@@ -219,6 +219,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_MenuSuperior.cshtml" />
     <Content Include="Views\Usuario\Form.cshtml" />
+    <Content Include="Views\Usuario\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

@@ -5,6 +5,17 @@ namespace Financas.Presentation.Controllers
 {
     public class UsuarioController : Controller
     {
+        public UsuarioController()
+        {
+           
+        }
+
+        public ActionResult Index()
+        {
+            //passar usuarios para listar 16:56
+            return View();
+        }
+
         public ActionResult Form()
         {
             return View();
@@ -14,7 +25,8 @@ namespace Financas.Presentation.Controllers
         {
             if (ModelState.IsValid)
             {
-                return RedirectToAction(null);
+                //Adicionar usuario via Serviço
+                return RedirectToAction("Index");
             }
             else
             {
