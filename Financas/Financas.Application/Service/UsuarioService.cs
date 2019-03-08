@@ -2,6 +2,7 @@
 using Financas.Domain;
 using Financas.Infrastructure.DependencyInjection;
 using Financas.Domain.Interface;
+using System.Collections.Generic;
 
 namespace Financas.Application.Service
 {
@@ -12,6 +13,11 @@ namespace Financas.Application.Service
         public void Adicionar(Usuario usuario)
         {
             _usuarioRepository.Add(usuario);
+        }
+
+        public ICollection<Usuario> ListarTodos()
+        {
+            return _usuarioRepository.FindAll();
         }
     }
 }

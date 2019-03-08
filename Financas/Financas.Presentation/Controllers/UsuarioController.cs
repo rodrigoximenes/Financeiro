@@ -3,6 +3,8 @@ using Financas.Domain;
 using Financas.Infrastructure.DependencyInjection;
 using Financas.Presentation.Models;
 using System.Web.Mvc;
+using System;
+using System.Collections.Generic;
 
 namespace Financas.Presentation.Controllers
 {
@@ -12,10 +14,14 @@ namespace Financas.Presentation.Controllers
 
         public UsuarioController() { }
 
+        #region Actions
+
         public ActionResult Index()
         {
-            _applicationManager.UsuarioService.Adicionar(new Usuario());
-            return View();
+            var usuarios = _applicationManager.UsuarioService.ListarTodos();
+            var usuariosViewModel = TransformarUsuarioParaViewModel(usuarios);
+
+            return View(usuariosViewModel);
         }
 
         public ActionResult Form()
@@ -27,7 +33,7 @@ namespace Financas.Presentation.Controllers
         {
             if (ModelState.IsValid)
             {
-                
+
                 return RedirectToAction("Index");
             }
             else
@@ -35,5 +41,28 @@ namespace Financas.Presentation.Controllers
                 return View("Form", usuarioView);
             }
         }
+
+        #endregion
+
+        #region Métodos
+
+        private ICollection<UsuarioViewModel> TransformarUsuarioParaViewModel(ICollection<Usuario> usuarios)
+        {
+            var listaViewModel = new List<UsuarioViewModel>();
+
+            foreach (var usuario in usuarios)
+            {
+                listaViewModel.Add(
+                    new UsuarioViewModel()
+                    {
+                        Nome = usuario.Nome,
+                        Email = usuario.Email
+                    });
+            }
+            return listaViewModel;
+        }
+
+        #endregion
+        
     }
 }

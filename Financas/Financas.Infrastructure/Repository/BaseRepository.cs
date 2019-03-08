@@ -2,13 +2,14 @@
 using Financas.Infrastructure.Context;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 
 namespace Financas.Infrastructure.Repository
 {
     public abstract class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : class
     {
-        private FinancasContext _context;
+        private readonly FinancasContext _context;
 
         public BaseRepository(FinancasContext context)
         {
@@ -17,7 +18,8 @@ namespace Financas.Infrastructure.Repository
 
         public void Add(TEntity entity)
         {
-            _context.Set<TEntity>().Add(entity);
+            //_context.Set<TEntity>().Add(entity);
+            _context.Entry(entity).State = EntityState.Added;
             _context.SaveChanges();
         }
 
@@ -25,7 +27,8 @@ namespace Financas.Infrastructure.Repository
         {
             var entity = Find(id);
 
-            _context.Set<TEntity>().Remove(entity);
+            //_context.Set<TEntity>().Remove(entity);
+            _context.Entry(entity).State = EntityState.Deleted;
             _context.SaveChanges();
         }
 
@@ -53,8 +56,10 @@ namespace Financas.Infrastructure.Repository
             }
         }
 
-        public void Update(TEntity _entityAdd)
+        public void Update(TEntity _entity)
         {
+            _context.Entry(_entity).State = EntityState.Modified;
+            _context.SaveChanges();
         }
     }
 }
