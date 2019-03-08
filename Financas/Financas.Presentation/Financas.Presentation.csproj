@@ -221,7 +221,20 @@
     <Content Include="Views\Usuario\Form.cshtml" />
     <Content Include="Views\Usuario\Index.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Financas.Application\Financas.Application.csproj">
+      <Project>{6BDE1B59-69B2-4C50-8C8A-029DA55109DE}</Project>
+      <Name>Financas.Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Financas.Domain\Financas.Domain.csproj">
+      <Project>{FD51DFD5-80CC-4E52-B012-92248883B748}</Project>
+      <Name>Financas.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Financas.Infrastructure\Financas.Infrastructure.csproj">
+      <Project>{B37336B4-5085-4D9C-B9B1-A6057EFE33DB}</Project>
+      <Name>Financas.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

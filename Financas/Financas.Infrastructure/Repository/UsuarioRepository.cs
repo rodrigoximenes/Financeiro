@@ -1,11 +1,13 @@
 ﻿using Financas.Domain;
+using Financas.Domain.Interface;
 using Financas.Infrastructure.Context;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace Financas.Infrastructure.Repository
 {
-    public class UsuarioRepository
+    public class UsuarioRepository : IUsuarioRepository
+
     {
         private readonly FinancasContext context;
 

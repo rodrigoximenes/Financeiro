@@ -7,7 +7,7 @@ namespace Financas.Application.Module
     {
         public override void Load()
         {
-            KernelInstance.Bind<ApplicationService>().ToSelf();
+            KernelInstance.Bind<ApplicationManager>().ToSelf();
         }
     }
 }

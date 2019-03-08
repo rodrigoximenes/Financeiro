@@ -1,17 +1,22 @@
-﻿using Financas.Presentation.Models;
+﻿using Financas.Application.Service;
+using Financas.Domain;
+using Financas.Presentation.Models;
 using System.Web.Mvc;
 
 namespace Financas.Presentation.Controllers
 {
     public class UsuarioController : Controller
     {
+        private ApplicationManager _applicationService;
+
         public UsuarioController()
         {
-           
+            _applicationService = new ApplicationManager();
         }
 
         public ActionResult Index()
         {
+            _applicationService.UsuarioRepository.Adicionar(new Usuario());
             //passar usuarios para listar 16:56
             return View();
         }
@@ -25,7 +30,7 @@ namespace Financas.Presentation.Controllers
         {
             if (ModelState.IsValid)
             {
-                //Adicionar usuario via Serviço
+                
                 return RedirectToAction("Index");
             }
             else
