@@ -48,6 +48,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\FinancasContext.cs" />
+    <Compile Include="Migrations\201903072344229_TabelasIniciais.cs" />
+    <Compile Include="Migrations\201903072344229_TabelasIniciais.Designer.cs">
+      <DependentUpon>201903072344229_TabelasIniciais.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -62,6 +67,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Repository\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201903072344229_TabelasIniciais.resx">
+      <DependentUpon>201903072344229_TabelasIniciais.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
