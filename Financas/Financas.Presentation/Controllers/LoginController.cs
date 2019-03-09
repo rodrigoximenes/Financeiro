@@ -14,7 +14,7 @@ namespace Financas.Presentation.Controllers
         {
             if (WebSecurity.Login(login, senha))
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Movimentacao");
             }
             else
             {
@@ -25,7 +25,6 @@ namespace Financas.Presentation.Controllers
 
         public ActionResult Logout()
         {
-
             WebSecurity.Logout();
             return RedirectToAction("Index");
         }

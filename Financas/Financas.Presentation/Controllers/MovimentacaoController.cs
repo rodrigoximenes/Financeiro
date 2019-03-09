@@ -2,14 +2,12 @@
 using Financas.Domain;
 using Financas.Infrastructure.DependencyInjection;
 using Financas.Presentation.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Financas.Presentation.Controllers
 {
+    [Authorize]
     public class MovimentacaoController : Controller
     {
         private readonly IApplicationManager _applicationManager = CompositionRoot.Resolve<IApplicationManager>();
