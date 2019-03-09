@@ -19,7 +19,7 @@ namespace Financas.Presentation.Controllers
             var movimentacoes = _applicationManager.MovimentacaoService.ListarTodas();
             var movimentacoesViewModel = TransformarListaMovimentacoesParaListaViewModel(movimentacoes);
 
-            return View(movimentacoesViewModel);
+            return View(movimentacoesViewModel as IList<MovimentacaoModel>);
         }
 
         public ActionResult Form()
