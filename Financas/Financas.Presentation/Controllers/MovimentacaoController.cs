@@ -17,7 +17,7 @@ namespace Financas.Presentation.Controllers
         public ActionResult Index()
         {
             var movimentacoes = _applicationManager.MovimentacaoService.ListarTodas();
-            var movimentacoesViewModel = TransformarListaMovimentacoesParaListaViewModel(movimentacoes);
+            var movimentacoesViewModel = TransformarListaMovimentacoesParaListaViewModel(movimentacoes as IList<Movimentacao>);
 
             return View(movimentacoesViewModel as IList<MovimentacaoModel>);
         }
@@ -47,7 +47,7 @@ namespace Financas.Presentation.Controllers
         public ActionResult MovimentacoesPorUsuario(MovimentacoesPorUsuarioModel model)
         {
             model.Usuarios = _applicationManager.UsuarioService.ListarTodos() as IList<Usuario>;
-            model.Movimentacoes = _applicationManager.MovimentacaoService.BuscarPorUsuario(model.UsuarioId);
+            model.Movimentacoes = _applicationManager.MovimentacaoService.BuscarPorUsuario(model.UsuarioId) as IList<Movimentacao>;
 
             return View(model);
         }
@@ -58,7 +58,7 @@ namespace Financas.Presentation.Controllers
             model.Movimentacoes = _applicationManager.MovimentacaoService.
                 Buscar(model.ValorMinimo, model.ValorMaximo,
                        model.DataMinima, model.DataMaxima,
-                       model.Tipo, model.UsuarioId);
+                       model.Tipo, model.UsuarioId) as IList<Movimentacao>;
 
             return View(model);
         }

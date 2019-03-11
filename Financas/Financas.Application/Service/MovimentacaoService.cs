@@ -16,7 +16,7 @@ namespace Financas.Application.Service
             _movimentacaoRepository.Add(movimentacao);
         }
 
-        public IList<Movimentacao> Buscar(decimal? valorMinimo, decimal? valorMaximo, DateTime? dataMinima, DateTime? dataMaxima, TipoMovimentacao? tipo, int? usuarioId)
+        public IEnumerable<Movimentacao> Buscar(decimal? valorMinimo, decimal? valorMaximo, DateTime? dataMinima, DateTime? dataMaxima, TipoMovimentacao? tipo, int? usuarioId)
         {
             IEnumerable<Movimentacao> busca = _movimentacaoRepository.FindAll();
 
@@ -53,12 +53,12 @@ namespace Financas.Application.Service
             return busca.ToList();
         }
 
-        public IList<Movimentacao> BuscarPorUsuario(int usuarioId)
+        public IEnumerable<Movimentacao> BuscarPorUsuario(int usuarioId)
         {
-            return _movimentacaoRepository.FindAll().Where(usuario => usuario.Id == usuarioId) as IList<Movimentacao>;
+            return _movimentacaoRepository.FindAllById(usuarioId);
         }
 
-        public ICollection<Movimentacao> ListarTodas()
+        public IEnumerable<Movimentacao> ListarTodas()
         {
             return _movimentacaoRepository.FindAll();
         }
