@@ -18,36 +18,36 @@ namespace Financas.Application.Service
 
         public IList<Movimentacao> Buscar(decimal? valorMinimo, decimal? valorMaximo, DateTime? dataMinima, DateTime? dataMaxima, TipoMovimentacao? tipo, int? usuarioId)
         {
-            IList<Movimentacao> busca = _movimentacaoRepository.FindAll() as IList<Movimentacao>;
+            IEnumerable<Movimentacao> busca = _movimentacaoRepository.FindAll();
 
             if (valorMinimo.HasValue)
             {
-                busca = busca.Where(m => m.Valor >= valorMinimo) as IList<Movimentacao>;
+                busca = busca.Where(m => m.Valor >= valorMinimo);
             }
 
             if (valorMaximo.HasValue)
             {
-                busca = busca.Where(m => m.Valor <= valorMaximo) as IList<Movimentacao>;
+                busca = busca.Where(m => m.Valor <= valorMaximo);
             }
 
             if (dataMinima.HasValue)
             {
-                busca = busca.Where(m => m.Data >= dataMinima) as IList<Movimentacao>;
+                busca = busca.Where(m => m.Data >= dataMinima);
             }
 
             if (dataMaxima.HasValue)
             {
-                busca = busca.Where(m => m.Data <= dataMaxima) as IList<Movimentacao>;
+                busca = busca.Where(m => m.Data <= dataMaxima);
             }
 
             if (tipo.HasValue)
             {
-                busca = busca.Where(m => m.Tipo == tipo) as IList<Movimentacao>;
+                busca = busca.Where(m => m.Tipo == tipo);
             }
 
             if (usuarioId.HasValue)
             {
-                busca = busca.Where(m => m.UsuarioId == usuarioId) as IList<Movimentacao>;
+                busca = busca.Where(m => m.UsuarioId == usuarioId);
             }
 
             return busca.ToList();

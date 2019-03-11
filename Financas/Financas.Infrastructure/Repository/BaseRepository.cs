@@ -44,7 +44,7 @@ namespace Financas.Infrastructure.Repository
             }
         }
 
-        public ICollection<TEntity> FindAll()
+        public IList<TEntity> FindAll()
         {
             try
             {

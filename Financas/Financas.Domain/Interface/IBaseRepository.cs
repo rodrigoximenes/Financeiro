@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace Financas.Domain.Interface
 {
@@ -12,6 +13,6 @@ namespace Financas.Domain.Interface
 
         TEntity Find(int id);
 
-        ICollection<TEntity> FindAll();
+        IList<TEntity> FindAll();
     }
 }
