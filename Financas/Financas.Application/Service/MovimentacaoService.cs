@@ -18,7 +18,7 @@ namespace Financas.Application.Service
 
         public IList<Movimentacao> Buscar(decimal? valorMinimo, decimal? valorMaximo, DateTime? dataMinima, DateTime? dataMaxima, TipoMovimentacao? tipo, int? usuarioId)
         {
-            ICollection<Movimentacao> busca = _movimentacaoRepository.FindAll();
+            IList<Movimentacao> busca = _movimentacaoRepository.FindAll() as IList<Movimentacao>;
 
             if (valorMinimo.HasValue)
             {
