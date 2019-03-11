@@ -44,6 +44,25 @@ namespace Financas.Presentation.Controllers
             }
         }
 
+        public ActionResult MovimentacoesPorUsuario(MovimentacoesPorUsuarioModel model)
+        {
+            model.Usuarios = _applicationManager.UsuarioService.ListarTodos() as IList<Usuario>;
+            model.Movimentacoes = _applicationManager.MovimentacaoService.BuscarPorUsuario(model.UsuarioId);
+
+            return View(model);
+        }
+
+        public ActionResult Busca(BuscaMovimentacoesModel model)
+        {
+            model.Usuarios = _applicationManager.UsuarioService.ListarTodos() as IList<Usuario>;
+            model.Movimentacoes = _applicationManager.MovimentacaoService.
+                Buscar(model.ValorMinimo, model.ValorMaximo,
+                       model.DataMinima, model.DataMaxima,
+                       model.Tipo, model.UsuarioId);
+
+            return View(model);
+        }
+
         #endregion
 
         #region Metodos

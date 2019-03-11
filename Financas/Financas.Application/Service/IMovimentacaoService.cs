@@ -1,16 +1,14 @@
 ﻿using Financas.Domain;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System;
 
 namespace Financas.Application.Service
 {
     public interface IMovimentacaoService
     {
         void Adicionar(Movimentacao movimentacao);
-
         ICollection<Movimentacao> ListarTodas();
+        IList<Movimentacao> BuscarPorUsuario(int usuarioId);
+        IList<Movimentacao> Buscar(decimal? valorMinimo, decimal? valorMaximo, DateTime? dataMinima, DateTime? dataMaxima, TipoMovimentacao? tipo, int? usuarioId);
     }
 }

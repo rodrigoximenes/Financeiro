@@ -1,5 +1,4 @@
-﻿using System;
-using Financas.Domain;
+﻿using Financas.Domain;
 using Financas.Infrastructure.DependencyInjection;
 using Financas.Domain.Interface;
 using System.Collections.Generic;
@@ -13,6 +12,11 @@ namespace Financas.Application.Service
         public void Adicionar(Usuario usuario)
         {
             _usuarioRepository.Add(usuario);
+        }
+
+        public Usuario BuscarPorId(int id)
+        {
+            return _usuarioRepository.Find(id);
         }
 
         public ICollection<Usuario> ListarTodos()

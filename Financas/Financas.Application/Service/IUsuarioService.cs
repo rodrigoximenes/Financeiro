@@ -8,5 +8,7 @@ namespace Financas.Application.Service
         void Adicionar(Usuario usuario);
 
         ICollection<Usuario> ListarTodos();
+
+        Usuario BuscarPorId(int id);
     }
 }
